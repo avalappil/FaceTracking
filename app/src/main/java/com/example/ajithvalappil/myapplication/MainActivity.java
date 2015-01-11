@@ -38,6 +38,7 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity implements SurfaceHolder.Callback{
@@ -75,8 +76,8 @@ public class MainActivity extends ActionBarActivity implements SurfaceHolder.Cal
                         myPictureCallback_RAW, myPictureCallback_JPG);
             }});
 
-        LinearLayout layoutBackground = (LinearLayout)findViewById(R.id.background);
-        layoutBackground.setOnClickListener(new LinearLayout.OnClickListener(){
+        RelativeLayout layoutBackground = (RelativeLayout)findViewById(R.id.background);
+        layoutBackground.setOnClickListener(new RelativeLayout.OnClickListener(){
 
             @Override
             public void onClick(View arg0) {
