@@ -52,7 +52,6 @@
             android:layout_alignRight="@+id/buttonTakePicture"
             android:layout_alignEnd="@+id/buttonTakePicture"
             android:textColor="#FFFFFF"
-            android:text="1 Face found"
             android:paddingLeft="2dp" />
 
         <TextView
@@ -85,7 +84,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Small Text"
             android:id="@+id/xdata"
             android:layout_alignTop="@+id/X"
             android:layout_toRightOf="@+id/X"
@@ -98,7 +96,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Small Text"
             android:id="@+id/ydata"
             android:textColor="#FFFFFF"
             android:layout_alignTop="@+id/textView2"
