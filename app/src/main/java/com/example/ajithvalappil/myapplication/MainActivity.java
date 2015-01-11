@@ -49,6 +49,9 @@ public class MainActivity extends ActionBarActivity implements SurfaceHolder.Cal
     boolean previewing = false;
     LayoutInflater controlInflater = null;
     Button buttonTakePicture;
+    TextView textView;
+    TextView xdata;
+    TextView ydata;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +65,10 @@ public class MainActivity extends ActionBarActivity implements SurfaceHolder.Cal
         surfaceHolder = surfaceView.getHolder();
         surfaceHolder.addCallback(this);
         surfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
+
+        textView = (TextView)findViewById(R.id.textView);
+        xdata = (TextView)findViewById(R.id.xdata);
+        ydata = (TextView)findViewById(R.id.ydata);
 
         controlInflater = LayoutInflater.from(getBaseContext());
 
@@ -99,12 +106,15 @@ public class MainActivity extends ActionBarActivity implements SurfaceHolder.Cal
                 System.out.println(" No Face Detected! ");
             }else{
                 System.out.println(String.valueOf(faces.length) + " Face Detected :) ");
+                textView.setText(String.valueOf(faces.length) + " Face Detected :) ");
                 if (faces.length > 0) {
                     // We could see if there's more than one face and do something in that case. What though?
                     Rect rect = faces[0].rect;
                     float x = (rect.left + rect.right)*0.5f;
                     float y = (rect.top + rect.bottom)*0.5f;
                     System.out.println("x: " + x + "y: " + y);
+                    xdata.setText(String.valueOf(x));
+                    ydata.setText(String.valueOf(y));
                     // If the face is on the left, turn left, if it's on the right, turn right.
                     // Speed is proportional to how far to the side of the image the face is.
                     // The coordinates we get from face detection are from -1000 to 1000.
