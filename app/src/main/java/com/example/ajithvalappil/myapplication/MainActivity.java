@@ -111,12 +111,32 @@ public class MainActivity extends ActionBarActivity implements SurfaceHolder.Cal
                 textView.setText(String.valueOf(faces.length) + " Face Detected :) ");
                 if (faces.length > 0) {
                     // We could see if there's more than one face and do something in that case. What though?
+                    int maxw = 750;
+                    int maxh = 550;
                     Rect rect = faces[0].rect;
                     float x = (rect.left + rect.right)*0.5f;
                     float y = (rect.top + rect.bottom)*0.5f;
                     System.out.println("x: " + x + "y: " + y);
-                    xdata.setText(String.valueOf(x));
-                    ydata.setText(String.valueOf(y));
+
+                    int tmpx = (int)x/10;
+                    tmpx = tmpx * 10;
+                    int xx = maxw + tmpx;
+
+                    if (xx<0) xx=0;
+                    if (xx>1500) xx = 1500;
+
+                    int tmpy = (int)y/10;
+                    tmpy = tmpy * 10;
+                    int yy = maxh + tmpy;
+
+                    if (yy<0) yy=0;
+                    if (yy>1000) yy = 1000;
+
+                    xx= ConvertRange(0,1500,10,170,xx);
+                    yy= ConvertRange(0,1000,10,170,yy);
+
+                    xdata.setText(String.valueOf(xx));
+                    ydata.setText(String.valueOf(yy));
                     // If the face is on the left, turn left, if it's on the right, turn right.
                     // Speed is proportional to how far to the side of the image the face is.
                     // The coordinates we get from face detection are from -1000 to 1000.
@@ -272,6 +292,15 @@ public class MainActivity extends ActionBarActivity implements SurfaceHolder.Cal
         });
         AlertDialog alert=builder.create();
         alert.show();
+    }
+
+    public int ConvertRange(
+            int originalStart, int originalEnd, // original range
+            int newStart, int newEnd, // desired range
+            int value) // value to convert
+    {
+        double scale = (double)(newEnd - newStart) / (originalEnd - originalStart);
+        return (int)(newStart + ((value - originalStart) * scale));
     }
 
 }
