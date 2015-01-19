@@ -221,7 +221,7 @@ public class MainActivity extends ActionBarActivity implements SurfaceHolder.Cal
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
         // TODO Auto-generated method stub
-        camera = Camera.open();
+        camera = Camera.open(2);
         camera.setFaceDetectionListener(faceDetectionListener);
     }
 
